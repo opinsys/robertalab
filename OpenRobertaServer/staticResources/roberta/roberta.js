@@ -1293,7 +1293,7 @@ function translate(jsdata) {
  */
 function switchLanguage(langCode, forceSwitch) {
     if (forceSwitch || userState.language != langCode) {
-        var langs = [ 'DE', 'EN' ];
+        var langs = [ 'DE', 'EN', 'FI' ];
         if (langs.indexOf(langCode) < 0) {
             langCode = "DE";
         }
@@ -1336,7 +1336,11 @@ function switchLanguageInBlockly(url) {
  * Initialize language switching
  */
 function initializeLanguages() {
-    if (navigator.language.indexOf("en") > -1) {
+    console.log(navigator.language);
+    if (navigator.language.indexOf("fi") > -1) {
+        switchLanguage('FI', true);
+        $('#chosenLanguage').text('FI');
+    } else if (navigator.language.indexOf("en") > -1) {
         switchLanguage('EN', true);
         $('#chosenLanguage').text('EN');
     } else {
